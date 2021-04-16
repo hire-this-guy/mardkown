@@ -8,27 +8,27 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import HelloWorld from "./components/HelloWorld.vue";
-import VueMarkdown from 'vue-markdown-render';
+import VueMarkdown from "vue-markdown-render";
 
 @Component({
   components: {
     HelloWorld,
     VueMarkdown,
-  }
-
+  },
 })
 export default class App extends Vue {
-  public text = "";
   private editorText = "";
-  private readonly storageKey = "markdown_text"
+  private readonly storageKey = "markdown_text";
 
-  mounted() {
+  mounted(): void {
     this.text = localStorage.getItem(this.storageKey) ?? "";
   }
+
   set text(value: string): void {
     this.editorText = value;
     localStorage.setItem(this.storageKey, value);
   }
+
   get text(): string {
     return this.editorText;
   }
@@ -37,15 +37,15 @@ export default class App extends Vue {
 
 <style>
 #app {
-  display:flex;
-  align-content:center;
-  justify-content:space-around;
-
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
 }
+
 .markdown,
 .editor {
-  width:48%;
+  width: 48%;
   min-height: 500px;
-  border:1px solid black;
+  border: 1px solid black;
 }
 </style>
