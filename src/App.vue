@@ -22,7 +22,7 @@ export default class App extends Vue {
     this.text = localStorage.getItem(this.storageKey) ?? "";
   }
 
-  set text(value: string): void {
+  set text(value: string) {
     this.editorText = value;
     localStorage.setItem(this.storageKey, value);
   }
