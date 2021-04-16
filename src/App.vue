@@ -19,8 +19,20 @@ import VueMarkdown from 'vue-markdown-render';
 })
 export default class App extends Vue {
   public text = "";
-}
+  private editorText = "";
+  private readonly storageKey = "markdown_text"
 
+  mounted() {
+    this.text = localStorage.getItem(this.storageKey) ?? "";
+  }
+  set text(value: string): void {
+    this.editorText = value;
+    localStorage.setItem(this.storageKey, value);
+  }
+  get text(): string {
+    return this.editorText;
+  }
+}
 </script>
 
 <style>
